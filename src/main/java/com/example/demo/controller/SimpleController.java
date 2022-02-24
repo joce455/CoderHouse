@@ -18,13 +18,8 @@ public class SimpleController {
         this.manageBooks = manageBooks;
     }
 
-    @GetMapping("/total-books")
-    public String totalBooks() {
-        return "{\"totalBooks\":" + manageBooks.totalBooks() + "}";
-    }
 
-    @RequestMapping(value = "/book-list",
-            method = RequestMethod.GET)
+    @GetMapping("/book-list")
     public List<Book> listBooks() {
         return manageBooks.listBooks();
     }
@@ -35,7 +30,6 @@ public class SimpleController {
     public void addBook(@RequestBody Book book) {
         manageBooks.addBook(book);
     }
-
 
 
 }
