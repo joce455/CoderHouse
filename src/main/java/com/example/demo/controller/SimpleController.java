@@ -3,7 +3,7 @@ package com.example.demo.controller;
 import com.example.demo.model.Book;
 import com.example.demo.service.IManageBooks;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -24,15 +24,14 @@ public class SimpleController {
     }
 
     @RequestMapping(value = "/book-list",
-            method = RequestMethod.GET,
-            produces = MediaType.APPLICATION_JSON_VALUE)
+            method = RequestMethod.GET)
     public List<Book> listBooks() {
         return manageBooks.listBooks();
     }
 
     @RequestMapping(value = "/add-book",
-            method = RequestMethod.POST,
-            produces = MediaType.APPLICATION_JSON_VALUE)
+            method = RequestMethod.POST)
+    @ResponseStatus(HttpStatus.OK)
     public void addBook(@RequestBody Book book) {
         manageBooks.addBook(book);
     }
